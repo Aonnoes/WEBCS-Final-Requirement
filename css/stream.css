@@ -1,0 +1,12 @@
+.main-layout {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100px 8vw 140px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  gap: 2rem;
+}
