@@ -4,9 +4,6 @@
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ===============================
-  // DISCUSSION / COMMENTS SECTION
-  // ===============================
   const form = document.querySelector(".discussion-form");
   const input = form ? form.querySelector("input") : null;
   const list = document.querySelector(".discussion-list");
@@ -15,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (form && input && list && headerCount) {
     let commentCount = document.querySelectorAll(".comment-item").length;
 
-    // Function: Update post counter
     const updateCommentCount = () => {
       headerCount.textContent = `${commentCount} post${
         commentCount !== 1 ? "s" : ""
@@ -24,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateCommentCount();
 
-    // Handle comment posting
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -33,17 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       commentCount++;
 
-      // Create comment container
       const newComment = document.createElement("div");
       newComment.classList.add("comment-item");
 
-      // Add avatar
       const avatar = document.createElement("img");
       avatar.src = "res/placeholder.png";
       avatar.alt = "User Profile";
       avatar.classList.add("comment-avatar");
 
-      // Add content
       const content = document.createElement("div");
       content.classList.add("comment-content");
 
@@ -54,16 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
       newComment.appendChild(avatar);
       newComment.appendChild(content);
 
-      // Append to list
       list.appendChild(newComment);
 
-      // Smooth scroll to bottom
       list.scrollTo({
         top: list.scrollHeight,
         behavior: "smooth",
       });
 
-      // Clear input & update counter
       input.value = "";
       updateCommentCount();
     });
@@ -78,6 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   menuToggle.addEventListener("click", () => {
     navLinks.classList.toggle("active");
-    menuToggle.classList.toggle("active"); // changes color of bars
+    menuToggle.classList.toggle("active");
   });
 });
