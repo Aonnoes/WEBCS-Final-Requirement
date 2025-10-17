@@ -29,7 +29,7 @@
 
           <div class="nav-links">
             <a href="home.html">HOME</a>
-            <a href="stream.html">STREAM</a>
+            <a href="stream.html" class="active">STREAM</a>
             <a href="shop.html">SHOP</a>
             <a href="subscribe.html" class="nav-subscribe">SUBSCRIBE</a>
           </div>
@@ -47,12 +47,71 @@
       </div>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main
-      class="main-layout"
-      style="background-image: url('res/background_stream.jpg')"
-    >
-      <!-- Insert main content here.. -->
+    <!-- MAIN STREAM LAYOUT -->
+    <main class="stream-section">
+      <div class="stream-container">
+        <div class="video-frame">
+          <!-- Embedded YouTube Video -->
+          <iframe
+            src="https://www.youtube.com/embed/wtBXsC90c5g?list=PLMBLbvGZhkvJz0u2YjX8i9iEWcHJ-rwf5&autoplay=0&rel=0&modestbranding=1"
+            title="Chiikawa Live Stream"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- DISCUSSION SECTION -->
+      <section class="discussion-section">
+        <div class="discussion-header">
+          <h2>Discussion 💬</h2>
+          <p>3 posts today</p>
+        </div>
+
+        <form class="discussion-form">
+          <input type="text" placeholder="Leave a comment" required />
+          <button type="submit">Post</button>
+        </form>
+
+        <div class="discussion-list">
+          <div class="comment-item">
+            <img
+              src="res/placeholder.png"
+              alt="User Profile"
+              class="comment-avatar"
+            />
+            <div class="comment-content">
+              <p><strong>1. ChiikawaFan01:</strong> So adorable! 🩷</p>
+            </div>
+          </div>
+
+          <div class="comment-item">
+            <img
+              src="res/placeholder.png"
+              alt="User Profile"
+              class="comment-avatar"
+            />
+            <div class="comment-content">
+              <p><strong>2. Hachiware:</strong> This made my day! 😍✨</p>
+            </div>
+          </div>
+
+          <div class="comment-item">
+            <img
+              src="res/placeholder.png"
+              alt="User Profile"
+              class="comment-avatar"
+            />
+            <div class="comment-content">
+              <p>
+                <strong>3. Usagi:</strong> The animation is so soft and cute
+                🐰💕
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- FOOTER -->
@@ -68,7 +127,6 @@
       </div>
     </footer>
 
-    <!-- JS Script -->
     <script src="js/script.js"></script>
   </body>
 </html>
