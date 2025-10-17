@@ -201,12 +201,12 @@ body {
 }
 
 .footer-right img {
-  width: 40px; /* consistent visual size */
-  height: auto; /* keeps proper aspect ratio */
-  border-radius: 8px; /* optional for rounded look */
-  object-fit: contain; /* prevents stretching or cropping */
-  filter: none; /* removes grayscale/invert filter */
-  opacity: 1; /* fully visible */
+  width: 40px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+  filter: none;
+  opacity: 1;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
@@ -338,13 +338,13 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    z-index: 2000; /* stays above everything */
+    z-index: 2000;
   }
 
   .menu-toggle .bar {
     width: 28px;
     height: 3px;
-    background-color: #fff; /* default color */
+    background-color: #fff;
     margin: 4px 0;
     border-radius: 3px;
     transition: background-color 0.3s ease;
@@ -363,7 +363,7 @@ body {
     position: absolute;
     top: 0.6rem;
     right: 1rem;
-    z-index: 1001; /* higher than menu */
+    z-index: 1001;
   }
 
   .nav-logo {
@@ -397,7 +397,7 @@ body {
 
   .nav-links.active {
     display: flex;
-    background: rgba(255, 255, 255, 0.9); /* translucent white background */
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 0 0 12px 12px;

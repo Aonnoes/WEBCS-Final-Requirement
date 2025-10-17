@@ -9,7 +9,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 100px 4vw 120px; /* ✅ smaller padding for all devices */
+  padding: 100px 4vw 120px;
   gap: 80px;
   background-image: url("res/background_shop.jpeg");
   background-repeat: no-repeat;
@@ -37,7 +37,7 @@
   color: white;
   text-decoration: none;
   letter-spacing: 0.05em;
-  margin: 0; /* remove extra spacing to match global layout */
+  margin: 0;
 }
 
 .main-nav a:hover {
@@ -68,7 +68,7 @@
   text-align: center;
   background: rgba(255, 255, 255, 0.15);
   border-radius: 20px;
-  padding: 60px 40px; /* ✅ reduced padding */
+  padding: 60px 40px;
   margin-bottom: 15px;
   backdrop-filter: blur(8px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
@@ -90,7 +90,7 @@
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 0 50px 20px; /* ✅ less side space */
+  padding: 0 50px 20px;
   display: flex;
   justify-content: flex-start;
   -webkit-overflow-scrolling: touch;
@@ -124,7 +124,7 @@
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 40px; /* ✅ reduced gap */
+  gap: 40px;
   width: max-content;
   margin: 0 auto;
   padding-bottom: 10px;
@@ -253,7 +253,7 @@
 
   .product-grid-wrapper {
     padding: 0 20px 18px;
-    scroll-snap-type: x mandatory; /* ✅ carousel snap */
+    scroll-snap-type: x mandatory;
   }
 
   .product-grid {
@@ -261,7 +261,7 @@
   }
 
   .product-card {
-    width: 85vw; /* ✅ use most of the screen */
+    width: 85vw;
     flex: 0 0 auto;
     scroll-snap-align: center;
   }

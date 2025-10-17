@@ -159,7 +159,7 @@
   padding: 0.6rem 1.4rem;
   font-weight: 700;
   cursor: pointer;
-  font-family: "Kodchasan", sans-serif; /* Match site font */
+  font-family: "Kodchasan", sans-serif;
   transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
@@ -188,7 +188,6 @@
   background: rgba(255, 255, 255, 0.12);
   padding: 1rem 1.2rem;
   border-radius: 14px;
-  /* Removed hover animation for static look */
 }
 
 /* --- Avatar Image --- */

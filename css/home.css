@@ -16,7 +16,6 @@
   background-repeat: no-repeat;
   gap: 2rem;
 
-  /* ✨ Fade in page on load */
   opacity: 0;
   animation: fadeIn 0.8s ease forwards;
 }
