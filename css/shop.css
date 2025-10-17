@@ -1,19 +1,300 @@
 /* =========================================================
-   Chiikawa Live - Home Page Styles
-   Layout, sections, and products styling
+   Chiikawa Live - Shop Page Styles
    ========================================================= */
 
 .main-layout {
   position: relative;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 100px 8vw 140px;
-  background-image: url("res/background.png");
+  justify-content: flex-start;
+  padding: 100px 4vw 120px; /* ✅ smaller padding for all devices */
+  gap: 80px;
+  background-image: url("res/background_shop.jpeg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   background-attachment: fixed;
   background-color: #000;
+}
+
+/* =========================================================
+   HEADER RESPONSIVENESS
+   ========================================================= */
+
+.site-header,
+.main-nav a,
+.section-title {
+  font-family: "Kodchasan", sans-serif;
+  transition: font-size 0.3s ease;
+}
+
+/* Header navigation links auto-scale */
+.main-nav a {
+  font-size: clamp(0.8rem, 1.8vw, 1.3rem);
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  margin: 0 1rem;
+}
+
+.main-nav a:hover {
+  color: #ffb6c1;
+}
+
+/* Header button text */
+.signin {
+  font-size: clamp(0.8rem, 1.8vw, 1.3rem);
+}
+
+/* Section Titles responsive */
+.section-title {
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  margin-bottom: 40px;
+}
+
+/* =========================================================
+   SHOP SECTIONS
+   ========================================================= */
+
+.shop-section {
+  width: 100%;
+  max-width: 1900px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 60px 40px; /* ✅ reduced padding */
+  margin-bottom: 15px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.shop-section:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+/* =========================================================
+   PRODUCT GRID
+   ========================================================= */
+
+.product-grid-wrapper {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0 50px 20px; /* ✅ less side space */
+  display: flex;
+  justify-content: flex-start;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+
+  scrollbar-width: thin;
+  scrollbar-color: #ffb6c1 transparent;
+}
+
+/* Cute pastel scrollbar (WebKit browsers) */
+.product-grid-wrapper::-webkit-scrollbar {
+  height: 12px;
+}
+
+.product-grid-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.product-grid-wrapper::-webkit-scrollbar-thumb {
+  background: #ffb6c1;
+  border-radius: 20px;
+}
+
+.product-grid-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #ffc8d6;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 40px; /* ✅ reduced gap */
+  width: max-content;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  box-sizing: content-box;
+  scroll-padding-left: 60px;
+}
+
+/* =========================================================
+   PRODUCT CARD (Expandable)
+   ========================================================= */
+
+.product-card {
+  background: transparent;
+  width: 300px;
+  text-align: center;
+  position: relative;
+  flex-shrink: 0;
+  opacity: 0.9;
+  transform: scale(0.9);
+  transition: all 0.4s ease;
+}
+
+.product-card:hover {
+  width: 340px;
+  transform: scale(1);
+  opacity: 1;
+  z-index: 10;
+}
+
+/* --- IMAGE CONTAINER --- */
+.image-container {
+  width: 100%;
+  height: 220px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  margin-bottom: 18px;
+  transition: all 0.4s ease;
+}
+
+.product-card:hover .image-container {
+  height: 250px;
+  box-shadow: 0 6px 18px rgba(255, 182, 193, 0.6);
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover .image-container img {
+  transform: scale(1.05);
+}
+
+/* --- PRODUCT NAME BAR --- */
+.product-name {
+  background: #fff;
+  color: #000;
+  font-weight: 700;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  padding: 12px 10px;
+  border-radius: 8px;
+  margin-top: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.4s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-card:hover .product-name {
+  box-shadow: 0 4px 15px rgba(255, 182, 193, 0.7);
+  transform: scale(1.05);
+}
+
+/* --- PRICE TAG --- */
+.price-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #ffb6c1;
+  color: #000;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: clamp(0.7rem, 1.4vw, 0.9rem);
+}
+
+/* --- LEAVE TAG --- */
+.leave-tag {
+  color: #ff5e7e;
+  font-weight: 700;
+  font-size: clamp(0.7rem, 1.3vw, 0.85rem);
+  margin-top: 10px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.product-card:hover .leave-tag {
+  opacity: 1;
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN (Tablet + Mobile Unified)
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .main-layout {
+    padding: 80px 3vw 100px;
+    gap: 60px;
+  }
+
+  .shop-section {
+    padding: 40px 15px;
+  }
+
+  .section-title {
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    margin-bottom: 30px;
+  }
+
+  .product-grid-wrapper {
+    padding: 0 20px 18px;
+    scroll-snap-type: x mandatory; /* ✅ carousel snap */
+  }
+
+  .product-grid {
+    gap: 25px;
+  }
+
+  .product-card {
+    width: 85vw; /* ✅ use most of the screen */
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+  }
+
+  .product-card:hover {
+    width: 85vw;
+    transform: scale(1.02);
+  }
+
+  .image-container {
+    height: 220px;
+  }
+
+  .product-name {
+    font-size: 0.95rem;
+  }
+
+  .price-tag {
+    font-size: 0.8rem;
+  }
+
+  .leave-tag {
+    font-size: 0.8rem;
+  }
+}
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
