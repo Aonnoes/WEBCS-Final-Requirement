@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       content.classList.add("comment-content");
 
       const commentText = document.createElement("p");
-      commentText.innerHTML = `<strong>${commentCount}. GuestUser:</strong> ${text}`;
+      commentText.innerHTML = `<strong>Guest:</strong> ${text}`;
 
       content.appendChild(commentText);
       newComment.appendChild(avatar);
