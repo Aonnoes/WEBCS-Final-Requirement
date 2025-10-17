@@ -303,142 +303,169 @@ body {
 
 /* --- SMARTPHONE VIEW (<=600px) --- */
 @media (max-width: 600px) {
-  /* Header layout */
-  .topbar {
-    justify-content: space-between;
-    padding: 0.8rem 1rem;
-  }
-
-  @media (max-width: 600px) {
-    .footer-left p {
-      font-size: 0.75rem;
-      text-align: center;
-    }
-
-    .footer-right img {
-      width: 32px;
-      height: 32px;
-    }
-  }
-
-  /* Show hamburger only on smartphone */
-  .menu-toggle {
-    display: flex !important;
-    position: absolute;
-    left: 1rem;
-    top: 1rem;
-  }
-
-  /* Hide desktop navigation and right section by default */
-  .nav-links,
-  .nav-right {
-    display: none;
-  }
-
-  /* --- SLIDE-IN MENU --- */
-  .main-nav {
+  /* --- HEADER --- */
+  .site-header {
+    background: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
     position: fixed;
     top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background: rgba(20, 20, 20, 0.95);
-    backdrop-filter: blur(8px);
-    overflow: hidden;
-    transition: width 0.35s ease;
+    width: 100%;
     z-index: 1000;
+  }
+
+  /* --- TOPBAR: hamburger left, logo right --- */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+    position: relative;
+    background: none;
+    z-index: 10;
+  }
+
+  /* --- HAMBURGER MENU BUTTON --- */
+  .menu-toggle {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-top: 4rem;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 2000; /* stays above everything */
   }
 
-  .main-nav.active {
-    width: 70%;
-    padding: 4rem 1.5rem;
+  .menu-toggle .bar {
+    width: 28px;
+    height: 3px;
+    background-color: #fff; /* default color */
+    margin: 4px 0;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
   }
 
-  /* --- NAVIGATION INSIDE MENU --- */
-  .nav-links {
+  /* --- Change color when active --- */
+  .menu-toggle.active .bar {
+    background-color: var(--accent);
+  }
+
+  /* --- LOGO FIXED ON RIGHT --- */
+  .nav-right {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.2rem;
-    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    position: absolute;
+    top: 0.6rem;
+    right: 1rem;
+    z-index: 1001; /* higher than menu */
   }
 
-  .nav-links a {
-    font-size: 1.3rem;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 700;
-    transition: color 0.3s ease;
-  }
-
-  .nav-links a:hover {
-    color: var(--accent);
-  }
-
-  /* --- Search, Sign In, and Logo inside menu --- */
-  .nav-search,
-  .signin,
   .nav-logo {
-    display: block;
-    width: 100%;
-    margin-top: 1.5rem;
-    text-align: left;
-  }
-
-  .nav-search input[type="search"] {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.9);
-    color: #333;
-  }
-
-  .signin {
-    background: var(--accent);
-    color: var(--text);
-    padding: 0.6rem 1rem;
-    border-radius: 25px;
-    display: inline-block;
-    text-align: center;
-    font-weight: 700;
-    margin-top: 1rem;
+    display: block !important;
   }
 
   .nav-logo img {
     width: 60px;
-    margin-top: 1.5rem;
+    height: auto;
   }
 
-  /* Prevent background scrolling when menu open */
+  /* --- MAIN NAVIGATION (dropdown container) --- */
+  .main-nav {
+    position: relative;
+    width: 100%;
+  }
+
+  /* --- DROPDOWN MENU --- */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 0.3rem;
+    overflow: hidden;
+    background: none;
+    animation: dropdownFade 0.3s ease forwards;
+  }
+
+  .nav-links.active {
+    display: flex;
+    background: rgba(255, 255, 255, 0.9); /* translucent white background */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 0 0 12px 12px;
+    padding: 0.5rem 0;
+  }
+
+  /* --- MENU LINKS --- */
+  .nav-links a {
+    width: 100%;
+    text-align: center;
+    padding: 0.9rem 0;
+    font-size: 1.2rem;
+    color: #000;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.25s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--accent);
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  /* --- HIDE SEARCH & SIGN-IN ON MOBILE --- */
+  .nav-search,
+  .signin {
+    display: none !important;
+  }
+
+  /* --- BODY SCROLL LOCK WHEN MENU OPEN --- */
   body.menu-open {
     overflow: hidden;
   }
 
-  /* Footer adjusts for mobile */
+  /* --- FOOTER STYLES --- */
   .site-footer {
     position: relative;
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 1rem;
+    background: none !important;
+    border-top: none !important;
+  }
+
+  .footer-left p {
+    font-size: 0.75rem;
+    text-align: center;
   }
 
   .footer-right {
     margin-top: 0.5rem;
   }
-}
 
-/* --- ANIMATIONS --- */
-@keyframes dropdownFade {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
+  .footer-right img {
+    width: 32px;
+    height: 32px;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  /* --- DROPDOWN ANIMATION --- */
+  @keyframes dropdownFade {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
