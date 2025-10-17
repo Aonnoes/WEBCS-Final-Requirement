@@ -37,7 +37,7 @@
   color: white;
   text-decoration: none;
   letter-spacing: 0.05em;
-  margin: 0 1rem;
+  margin: 0; /* remove extra spacing to match global layout */
 }
 
 .main-nav a:hover {
