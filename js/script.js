@@ -1,53 +1,73 @@
 /* =========================================================
    Chiikawa Live - Script File
-   Handles hamburger menu and basic UI actions
+   Handles discussion/comment actions only
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Get elements
-  const menuToggle = document.querySelector(".menu-toggle");
-  const mainNav = document.querySelector(".main-nav");
-  const navLinks = document.querySelectorAll(".nav-links a");
+  // ===============================
+  // DISCUSSION / COMMENTS SECTION
+  // ===============================
+  const form = document.querySelector(".discussion-form");
+  const input = form ? form.querySelector("input") : null;
+  const list = document.querySelector(".discussion-list");
+  const headerCount = document.querySelector(".discussion-header p");
 
-  if (menuToggle && mainNav) {
-    // Toggle menu open/close
-    menuToggle.addEventListener("click", () => {
-      mainNav.classList.toggle("active");
-      menuToggle.classList.toggle("open");
-      document.body.classList.toggle("menu-open"); // stop page scroll when open
-    });
+  if (form && input && list && headerCount) {
+    let commentCount = document.querySelectorAll(".comment-item").length;
 
-    // Close menu when clicking outside
-    document.addEventListener("click", (e) => {
-      if (
-        mainNav.classList.contains("active") &&
-        !mainNav.contains(e.target) &&
-        !menuToggle.contains(e.target)
-      ) {
-        mainNav.classList.remove("active");
-        menuToggle.classList.remove("open");
-        document.body.classList.remove("menu-open");
-      }
-    });
+    // Function: Update post counter
+    const updateCommentCount = () => {
+      headerCount.textContent = `${commentCount} post${
+        commentCount !== 1 ? "s" : ""
+      } today`;
+    };
 
-    // Close menu when a nav link is clicked
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        mainNav.classList.remove("active");
-        menuToggle.classList.remove("open");
-        document.body.classList.remove("menu-open");
+    updateCommentCount();
+
+    // Handle comment posting
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const text = input.value.trim();
+      if (text === "") return;
+
+      commentCount++;
+
+      // Create comment container
+      const newComment = document.createElement("div");
+      newComment.classList.add("comment-item");
+
+      // Add avatar
+      const avatar = document.createElement("img");
+      avatar.src = "res/placeholder.png";
+      avatar.alt = "User Profile";
+      avatar.classList.add("comment-avatar");
+
+      // Add content
+      const content = document.createElement("div");
+      content.classList.add("comment-content");
+
+      const commentText = document.createElement("p");
+      commentText.innerHTML = `<strong>${commentCount}. GuestUser:</strong> ${text}`;
+
+      content.appendChild(commentText);
+      newComment.appendChild(avatar);
+      newComment.appendChild(content);
+
+      // Append to list
+      list.appendChild(newComment);
+
+      // Smooth scroll to bottom
+      list.scrollTo({
+        top: list.scrollHeight,
+        behavior: "smooth",
       });
+
+      // Clear input & update counter
+      input.value = "";
+      updateCommentCount();
     });
   }
 
-  // Add hamburger bars
-  if (menuToggle) {
-    menuToggle.innerHTML = `
-      <span class="bar top"></span>
-      <span class="bar middle"></span>
-      <span class="bar bottom"></span>
-    `;
-  }
-
-  console.log("✅ Chiikawa Live script loaded");
+  console.log("💬 Discussion system ready (Hamburger removed)");
 });
