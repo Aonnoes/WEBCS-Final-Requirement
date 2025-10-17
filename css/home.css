@@ -15,6 +15,10 @@
   background-position: center;
   background-repeat: no-repeat;
   gap: 2rem;
+
+  /* ✨ Fade in page on load */
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
 }
 
 /* --- WATCH NOW SECTION --- */
@@ -23,6 +27,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  /* ✨ Slide-up fade effect */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.1s;
 }
 
 .watch-main-btn {
@@ -54,6 +64,12 @@
   width: 50%;
   max-width: 700px;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+
+  /* ✨ Slide-up animation */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.2s;
 }
 
 .section-title {
@@ -61,6 +77,11 @@
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
+
+  /* ✨ Smooth fade in */
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+  animation-delay: 0.25s;
 }
 
 /* --- NEWS CARDS --- */
@@ -74,6 +95,21 @@
   margin-bottom: 1.5rem;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* ✨ Each card fades up slightly later */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.9s ease forwards;
+}
+
+.news-card:nth-child(1) {
+  animation-delay: 0.3s;
+}
+.news-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.news-card:nth-child(3) {
+  animation-delay: 0.5s;
 }
 
 .news-card:hover {
@@ -199,5 +235,29 @@
   .watch-main-btn {
     font-size: 1.4rem;
     padding: 0.9rem 2rem;
+  }
+}
+
+/* =========================================================
+   ✨ ANIMATIONS (from shop.css)
+   ========================================================= */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
