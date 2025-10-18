@@ -1,6 +1,6 @@
 /* =========================================================
    Chiikawa Live - Shop Page Styles
-    Layout, sections, and product styling
+   Layout, sections, and product styling
    ========================================================= */
 
 .main-layout {
@@ -31,28 +31,32 @@
   transition: font-size 0.3s ease;
 }
 
-/* Header navigation links auto-scale */
+/* Header navigation links */
 .main-nav a {
-  font-size: clamp(0.8rem, 1.8vw, 1.3rem);
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 800;
   color: white;
   text-decoration: none;
   letter-spacing: 0.05em;
   margin: 0;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s ease;
 }
 
 .main-nav a:hover {
-  color: #ffb6c1;
+  color: var(--accent);
+  text-shadow: 0 4px 10px rgba(255, 182, 193, 0.7);
+  transform: translateY(-2px);
 }
 
 /* Header button text */
 .signin {
-  font-size: clamp(0.8rem, 1.8vw, 1.3rem);
+  font-size: 1.1rem;
 }
 
-/* Section Titles responsive */
+/* Section Titles */
 .section-title {
-  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-size: 2rem;
   font-weight: 700;
   color: #fff;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
@@ -102,20 +106,16 @@
   scrollbar-color: #ffb6c1 transparent;
 }
 
-/* Cute pastel scrollbar (WebKit browsers) */
 .product-grid-wrapper::-webkit-scrollbar {
   height: 12px;
 }
-
 .product-grid-wrapper::-webkit-scrollbar-track {
   background: transparent;
 }
-
 .product-grid-wrapper::-webkit-scrollbar-thumb {
   background: #ffb6c1;
   border-radius: 20px;
 }
-
 .product-grid-wrapper::-webkit-scrollbar-thumb:hover {
   background: #ffc8d6;
 }
@@ -134,7 +134,7 @@
 }
 
 /* =========================================================
-   PRODUCT CARD (Expandable)
+   PRODUCT CARD
    ========================================================= */
 
 .product-card {
@@ -192,7 +192,7 @@
   background: #fff;
   color: #000;
   font-weight: 700;
-  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  font-size: 1rem;
   padding: 12px 10px;
   border-radius: 8px;
   margin-top: 5px;
@@ -218,14 +218,14 @@
   font-weight: 700;
   padding: 5px 10px;
   border-radius: 8px;
-  font-size: clamp(0.7rem, 1.4vw, 0.9rem);
+  font-size: 0.9rem;
 }
 
 /* --- LEAVE TAG --- */
 .leave-tag {
   color: #ff5e7e;
   font-weight: 700;
-  font-size: clamp(0.7rem, 1.3vw, 0.85rem);
+  font-size: 0.9rem;
   margin-top: 10px;
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -236,21 +236,17 @@
 }
 
 /* =========================================================
-   RESPONSIVE DESIGN (Tablet + Mobile Unified)
+   RESPONSIVE DESIGN
    ========================================================= */
 
 @media (max-width: 900px) {
   .main-layout {
-    padding: 80px 3vw 100px;
+    padding: 100px 3vw 100px;
     gap: 60px;
   }
 
-  .shop-section {
-    padding: 40px 15px;
-  }
-
   .section-title {
-    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    font-size: 1.8rem;
     margin-bottom: 30px;
   }
 
@@ -274,27 +270,143 @@
     transform: scale(1.02);
   }
 
-  .image-container {
-    height: 220px;
-  }
-
   .product-name {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
-  .price-tag {
-    font-size: 0.8rem;
-  }
-
+  .price-tag,
   .leave-tag {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================================================
+   NAV + HEADER FIX (Match Global.css)
+   ========================================================= */
+
+body.shop-page .site-header {
+  background: rgba(255, 255, 255, 0.25);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+}
+
+body.shop-page .topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 2rem;
+  gap: 1.5rem;
+}
+
+body.shop-page .main-nav {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 2rem;
+}
+
+body.shop-page .main-nav a {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.shop-page .main-nav a:hover {
+  color: var(--accent);
+  text-shadow: 0 4px 10px rgba(255, 182, 193, 0.7);
+  transform: translateY(-2px);
+}
+
+body.shop-page .signin {
+  background: var(--accent);
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+body.shop-page .signin:hover {
+  background: var(--accent-hover);
+  transform: scale(1.05);
+}
+
+body.shop-page .site-footer {
+  background: #2d2d2d !important;
+}
+
+/* Tablet */
+@media (max-width: 900px) and (min-width: 601px) {
+  body.shop-page .main-nav a {
+    font-size: 1.2rem;
+  }
+  body.shop-page .signin {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  body.shop-page .site-header {
+    background: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  body.shop-page .main-nav a {
+    font-size: 1.2rem;
+  }
+
+  body.shop-page .signin {
+    display: none !important;
+  }
+
+  body.shop-page .menu-toggle .bar {
+    background-color: #fff;
+  }
+
+  /* ✅ Hamburger dropdown background same as footer */
+  body.shop-page .nav-links.active {
+    background: #2d2d2d !important;
+    border-radius: 0 0 12px 12px;
+    padding: 0.5rem 0;
+  }
+
+  /* ✅ When hamburger is open → dark text */
+  body.shop-page .menu-toggle.active ~ .nav-links.active a {
+    color: #111 !important;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  body.shop-page .menu-toggle.active ~ .nav-links.active a:hover {
+    color: var(--accent) !important;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  /* Fallback if sibling selector doesn't catch */
+  body.shop-page .nav-links.active a {
+    color: #111 !important;
   }
 }
 
 /* =========================================================
    ANIMATION
    ========================================================= */
-
 @keyframes fadeInUp {
   to {
     opacity: 1;
