@@ -1,19 +1,349 @@
 /* =========================================================
-   Chiikawa Live - Subscribe Page Styles
-   Layout, sections, and plans styling
+   subscribe.css
+   Final version — tablet header background fixed, mobile transparent
    ========================================================= */
 
+/* MAIN LAYOUT */
 .main-layout {
   position: relative;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 100px 8vw 140px;
-  background-image: url("res/background.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  background-attachment: fixed;
-  background-color: #000;
+  padding: 120px 6vw 140px;
+  background: #ffffff;
+  overflow-x: hidden;
+}
+
+body.subscribe-page {
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #ffffff;
+  color: #000;
+}
+
+/* PLANS SECTION */
+.plans-section {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  text-align: center;
+  color: #000;
+  background: none;
+  padding: 0 2rem 4rem;
+}
+
+.plans-title {
+  font-size: 1.3rem;
+  color: #000;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+/* GRID (desktop default: 3 across) */
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: start;
+}
+
+/* wrapper groups card + button */
+.plan-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  scroll-snap-align: center;
+  flex-shrink: 0;
+}
+
+/* CARD */
+.plan-card {
+  background: #fff;
+  border: 2px solid #dcdcdc;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 380px;
+  padding: 1.5rem 2rem 2rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.18s ease;
+}
+
+.plan-card:hover {
+  transform: translateY(-5px);
+}
+
+.plan-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #000;
+}
+.plan-quality {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+/* table rows force two-line behavior and consistent height */
+.plan-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  color: #000;
+  table-layout: fixed;
+}
+.plan-table td {
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+  line-height: 1.2;
+  min-height: 42px;
+  height: 42px;
+  word-wrap: break-word;
+}
+.plan-table td:first-child {
+  font-weight: 500;
+  color: #333;
+  width: 60%;
+}
+.plan-table td:last-child {
+  text-align: right;
+  font-weight: 600;
+  width: 40%;
+}
+
+/* plan visual styles */
+.plan-card.starter {
+  background: #e6e6e6;
+}
+.plan-card.plus {
+  border: 2px solid #298ef0;
+  box-shadow: 0 0 10px rgba(41, 142, 240, 0.18);
+}
+.plan-card.ultimate {
+  border: 2px solid #ffcc00;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.18);
+}
+
+/* BUTTONS (outside the card) */
+.plan-btn {
+  display: inline-block;
+  width: 200px;
+  margin-top: 1rem;
+  background: #fff;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  padding: 0.7rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.plan-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+.plan-btn.current {
+  cursor: default;
+  background: #f9f9f9;
+  font-size: 0.95rem;
+}
+
+/* footnote */
+.plan-note {
+  font-size: 0.8rem;
+  color: #000;
+  opacity: 0.85;
+  margin-top: 2.5rem;
+}
+.plan-note a {
+  color: #0066ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ====================
+   HEADER / NAV / FOOTER overrides
+   ==================== */
+
+/* Desktop & Tablet default: use same dark background for header and footer */
+body.subscribe-page .site-header,
+body.subscribe-page .topbar,
+body.subscribe-page .site-footer {
+  background: #2d2d2d !important;
+  border: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Nav links color */
+body.subscribe-page .main-nav a {
+  color: #ffffff !important;
+}
+body.subscribe-page .main-nav a:hover {
+  color: #ff8fb1 !important;
+}
+
+/* Search and sign in adjustments */
+body.subscribe-page .nav-search input[type="search"] {
+  background: #fff !important;
+  color: #000 !important;
+}
+body.subscribe-page .signin {
+  background: #ffffff !important;
+  color: #000 !important;
+}
+body.subscribe-page .signin:hover {
+  background: #ff8fb1 !important;
+  color: #fff !important;
+}
+
+/* Footer text/icons */
+body.subscribe-page .site-footer p,
+body.subscribe-page .site-footer a {
+  color: #ffffff !important;
+}
+body.subscribe-page .site-footer img {
+  filter: brightness(1);
+}
+
+/* ====================
+   RESPONSIVE behavior
+   ==================== */
+
+/* Tablet & small desktops */
+@media (max-width: 1024px) {
+  .main-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 160px; /* keep space for fixed header */
+    padding-bottom: 160px;
+  }
+
+  .plans-section {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Horizontal scroll container with side padding so next card peeks */
+  .plans-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    gap: 1.5rem;
+    justify-content: flex-start;
+    padding: 1rem 1.6rem 2rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .plans-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .plans-grid {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .plan-wrapper {
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+  .plan-card {
+    max-width: 320px;
+  }
+
+  /* Ensure header/footer stay dark on tablet by reiterating the rule (higher specificity precedence) */
+  body.subscribe-page .site-header,
+  body.subscribe-page .topbar,
+  body.subscribe-page .site-footer {
+    background: #2d2d2d !important;
+  }
+}
+
+/* Mobile: below 601px — transparent header, dark dropdown, small cards */
+@media (max-width: 600px) {
+  .main-layout {
+    padding-top: 160px;
+    padding-bottom: 160px;
+  }
+
+  .plans-grid {
+    padding: 1rem 1.2rem 2.5rem;
+    gap: 1.2rem;
+  }
+  .plan-card {
+    max-width: 300px;
+  }
+
+  /* Make header transparent on small phones only */
+  body.subscribe-page .site-header,
+  body.subscribe-page .topbar {
+    background: none !important;
+  }
+
+  /* Hamburger icon color: dark bars so visible over transparent header */
+  body.subscribe-page .menu-toggle .bar {
+    background-color: #2d2d2d !important;
+    box-shadow: none !important;
+  }
+
+  /* Active hamburger accent */
+  body.subscribe-page .menu-toggle.active .bar {
+    background-color: #ff8fb1 !important;
+  }
+
+  /* Dropdown when active should be dark (match footer/nav) */
+  body.subscribe-page .nav-links.active {
+    display: flex !important;
+    background: #2d2d2d !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0 0 12px 12px;
+    padding: 0.5rem 0;
+  }
+  body.subscribe-page .nav-links a {
+    color: #ffffff !important;
+  }
+
+  /* Keep header fixed so logo/hamburger remain visible */
+  .site-header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  main.main-layout {
+    padding-top: 180px;
+  }
+  .nav-logo img {
+    width: 60px;
+    height: auto;
+  }
+}
+
+/* Ensure desktop (wider than tablet) keeps dark header */
+@media (min-width: 1025px) {
+  body.subscribe-page .site-header,
+  body.subscribe-page .topbar,
+  body.subscribe-page .site-footer {
+    background: #2d2d2d !important;
+  }
+}
+
+/* small accessibility tweak: focus outlines */
+.plan-btn:focus,
+.menu-toggle:focus,
+.main-nav a:focus {
+  outline: 3px solid rgba(255, 143, 177, 0.25);
+  outline-offset: 3px;
 }
