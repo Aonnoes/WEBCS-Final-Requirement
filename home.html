@@ -120,6 +120,38 @@
       </div>
     </footer>
 
+    <!-- SIGN-IN / SIGN-UP POPUP -->
+    <div id="signinOverlay" class="signin-overlay">
+      <div class="signin-modal" id="signinFormContainer" data-mode="signin">
+        <button id="closeSignin" class="close-btn">×</button>
+        <h2 id="formTitle">Sign In</h2>
+        <form>
+          <div class="input-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              placeholder="Enter your username"
+              required
+            />
+          </div>
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <button type="submit" class="submit-btn">Continue</button>
+        </form>
+        <p class="toggle-text">
+          <a href="#" id="toggleAuthMode">Don't have an account? Sign Up</a>
+        </p>
+      </div>
+    </div>
+
     <!-- JS Script -->
     <script src="js/script.js"></script>
   </body>
