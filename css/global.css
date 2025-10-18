@@ -176,7 +176,7 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: #2d2d2d; /* ✅ consistent footer color */
+  background: #2d2d2d;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -239,7 +239,7 @@ body {
   /* Allow wrapping inside topbar to avoid cropping */
   .topbar {
     display: flex;
-    flex-wrap: wrap; /* ✅ allows wrapping */
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 0.8rem 1.5rem;
@@ -298,7 +298,7 @@ body {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: #2d2d2d; /* ✅ same color */
+    background: #2d2d2d;
   }
 }
 
@@ -440,7 +440,7 @@ body {
     align-items: center;
     text-align: center;
     padding: 1rem;
-    background: #2d2d2d !important; /* ✅ consistent footer color */
+    background: #2d2d2d !important;
     border-top: none;
   }
 
